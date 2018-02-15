@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /**
+       * Style for the <input type='checkbox'/> element.
+       */
+      input[type=checkbox] {
+        font-size: 1em; /* So that the sizing properties below work */
+        height: 0; /* Hide the checkbox */
+        margin: 1em 0 0 0; /* Block out space for how tall we want the slider to be */
+        width: 2em; /* Block out space for how wide we want the slider to be */
+      }
+
+      /**
+       * Style for the background.
+       */
+      input[type=checkbox]::before {
+        border-radius: 0.5em; /* Make the corners rounded */
+        position: absolute;
+        content: ""; /* Need this property so the background shows */
+        height: 1em; /* How tall the background is */
+        margin-top: -1em; /* Put the background into the correct position */
+        width: 2em; /* How wide the background is */
+        background: grey; /* Color of background in off state */
+        transition: 0.25s; /* Transition time between colors */
+      }
+
+      /**
+       * Style for the background in the on state.
+       */
+      input[type=checkbox]:checked::before {
+        background-color: gold;
+      }
+
+      /**
+       * Style for the background in the on state while it's being pressed.
+       */
+      input[type=checkbox]:checked:active::before {
+        background: darkgoldenrod;
+      }
+
+      /**
+       * Style for the background in the off state while it's being pressed.
+       */
+      input[type=checkbox]:active::before {
+        background: lightgrey;
+      }
+
+      /**
+       * Style for the slider knob.
+       */
+      input[type=checkbox]::after {
+        border-radius: 0.5em; /* Make it round */
+        position: absolute;
+        content: ""; /* Need this property or it won't show */
+        height: 0.75em; /* Height of the knob */
+        width: 0.75em; /* Width of the knob */
+        margin: -0.875em 0.125em 0.125em 0.125em; /* Put it in the right position */
+        background: white; /* Color of the knob */
+        transition: 0.25s; /* Transition time between states */
+      }
+
+      /**
+       * Style for the slider knob in the on state.
+       */
+      input[type=checkbox]:checked::after {
+        transform: translateX(1em); /* Just slide it over to the right */
+      }
+    </style>
+  </head>
+  <body style="font-size: 3em;">
+    <label for='id'>Click me!</label>
+    <input id='id' type='checkbox'/>
+  </body>
+</html>
